@@ -210,7 +210,13 @@ const Table = (props) => {
         <tbody>
           {(isLoading ? [...new Array(20)] : tableData).map((item, index) => (
             <tr key={index}>
-              <td>{isLoading ? <SkeletonLoader /> : item.id}</td>
+              <td>
+                {isLoading ? (
+                  <SkeletonLoader className="pinkLoader" />
+                ) : (
+                  item.id
+                )}
+              </td>
               <td>{isLoading ? <SkeletonLoader /> : item.name}</td>
               <td>{isLoading ? <SkeletonLoader /> : item.status}</td>
               <td>{isLoading ? <SkeletonLoader /> : item.description}</td>
