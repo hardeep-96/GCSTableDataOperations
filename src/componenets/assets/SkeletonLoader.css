@@ -1,0 +1,26 @@
+@-webkit-keyframes placeholderShimmerDark{
+    0% {
+        background-position: -100px 0;
+    }
+    100% {
+        background-position: 100px 0;
+    }
+}
+.loader-line.shimmer {
+    background: #1f2739;
+    background-image: linear-gradient(to right, #1f2739 0% , #464a52 20% , #1f2739 50%, #464a52 100% );
+    background-repeat: no-repeat;
+    background-size: 800px 104px;
+    display: inline-block;
+    position: relative;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeholderShimmer;
+    animation-timing-function: linear;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-name: placeholderShimmerDark;
+    -webkit-animation-timing-function: linear;
+  }

@@ -1,0 +1,178 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  line-height: 1.42em;
+  color: #a7a1ae;
+  background-color: #1f2739;
+}
+
+th span {
+  /* font-size: 3em; */
+  font-weight: bolder;
+  line-height: 1em;
+  text-align: center;
+  color: #185875;
+}
+
+h2 {
+  font-size: 1em;
+  font-weight: 300;
+  text-align: center;
+  display: block;
+  line-height: 1em;
+  padding-bottom: 2em;
+  color: #fb667a;
+}
+
+h2 a {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fb667a;
+  text-decoration: none;
+}
+
+.blue {
+  color: #185875;
+}
+.yellow {
+  color: #fff842;
+}
+
+.container th h1,.main p  {
+  font-weight: bold;
+  font-size: 1em;
+  text-align: left;
+  color: #185875;
+}
+
+.container td {
+  font-weight: normal;
+  font-size: 1em;
+  -webkit-box-shadow: 0 2px 2px -2px #0e1119;
+  -moz-box-shadow: 0 2px 2px -2px #0e1119;
+  box-shadow: 0 2px 2px -2px #0e1119;
+}
+
+.container {
+  text-align: left;
+  overflow: hidden;
+  width: 80%;
+  margin: 0 auto;
+  display: table;
+  padding: 0 0 1em 0;
+}
+
+.container td,
+.container th {
+  width: auto;
+  padding: 2%;
+}
+
+/* Background-color of the odd rows */
+.container tr:nth-child(odd) {
+  background-color: #323c50;
+}
+
+/* Background-color of the even rows */
+.container tr:nth-child(even) {
+  background-color: #2c3446;
+}
+
+.container th {
+  background-color: #1f2739;
+}
+
+.container th span {
+  position: relative;
+}
+
+.container th span::after{
+  content: '';
+  border: 8px solid transparent;
+  /* border-bottom: 8px solid #185875;
+  border-top: 8px solid #185875; */
+  position: absolute;
+  right: -18px;
+}
+.container th span.up-arrow::after{
+  border-bottom: 10px solid #185875;
+  bottom: 25%;
+}
+.container th span.down-arrow::after{
+  border-top: 10px solid #185875;
+  top: 33%;
+}
+
+.container td:first-child {
+  color: #fb667a;
+}
+
+.container tr:hover {
+  background-color: #464a52;
+  -webkit-box-shadow: 0 6px 6px -6px #0e1119;
+  -moz-box-shadow: 0 6px 6px -6px #0e1119;
+  box-shadow: 0 6px 6px -6px #0e1119;
+}
+
+@media (max-width: 800px) {
+  .container td:nth-child(4),
+  .container th:nth-child(4) {
+    display: none;
+  }
+}
+.container th:nth-child(1), .container th:nth-child(2), .container th:nth-child(6){
+  cursor: pointer;
+}
+
+.main{
+  /* padding: 2%; */
+  width: 90%;
+}
+
+.main input[type="text"] {
+  /* width: 25%; */
+  padding: 12px 20px;
+  margin-left: 10%;
+  display: inline-block;
+  border: 1px solid rgb(14, 12, 12);
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #464a52;
+  color: #ffff;
+}
+
+.main p {
+  margin-left: 10%;
+  width: 100%;
+}
+
+.main .status {
+  /* width: 25%; */
+  height: auto;
+  padding: 12px 20px;
+  margin-left: 10%;
+  display: inline-block;
+  border: 1px solid rgb(14, 12, 12);
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #464a52;
+  color: rgb(139, 131, 131);
+  font-size: 16px;
+}
+
+.main option{
+  font-size: 16px;
+}
+
+.filter-cont{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left:8.3%;
+}
+.filter-cont .filter:last-child{
+  margin: 2% 10%;
+}
