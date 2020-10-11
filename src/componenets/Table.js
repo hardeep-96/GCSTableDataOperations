@@ -121,6 +121,12 @@ const Table = (props) => {
                 ? itemB[column].localeCompare(itemA[column])
                 : itemA[column].localeCompare(itemB[column])
             )
+          : column === "createdOn"
+          ? sortedTableDta.sort((itemA, itemB) =>
+              sortDir === "desc"
+                ? new Date(itemB[column]) - new Date(itemA[column])
+                : new Date(itemA[column]) - new Date(itemB[column])
+            )
           : sortedTableDta.sort((itemA, itemB) =>
               sortDir === "desc"
                 ? itemB[column] - itemA[column]
@@ -208,7 +214,13 @@ const Table = (props) => {
               <td>{isLoading ? <SkeletonLoader /> : item.status}</td>
               <td>{isLoading ? <SkeletonLoader /> : item.description}</td>
               <td>{isLoading ? <SkeletonLoader /> : item.delta}</td>
-              <td>{isLoading ? <SkeletonLoader /> : item.createdOn}</td>
+              <td>
+                {isLoading ? (
+                  <SkeletonLoader />
+                ) : (
+                  new Date(item.createdOn).toDateString()
+                )}
+              </td>
             </tr>
           ))}
         </tbody>
