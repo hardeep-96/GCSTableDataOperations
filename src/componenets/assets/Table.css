@@ -41,7 +41,8 @@ h2 a {
   color: #fff842;
 }
 
-.container th h1,.main p  {
+.container th h1,
+.main p {
   font-weight: bold;
   font-size: 1em;
   text-align: left;
@@ -89,21 +90,40 @@ h2 a {
   position: relative;
 }
 
-.container th span::after{
-  content: '';
+.container th span::after {
+  content: "";
   border: 8px solid transparent;
   /* border-bottom: 8px solid #185875;
   border-top: 8px solid #185875; */
   position: absolute;
   right: -18px;
 }
-.container th span.up-arrow::after{
+
+.container th span.up-arrow::after {
   border-bottom: 10px solid #185875;
   bottom: 25%;
 }
-.container th span.down-arrow::after{
+.container th span.down-arrow::after {
   border-top: 10px solid #185875;
   top: 33%;
+}
+
+.container th:nth-child(1):hover span::after,
+.container th:nth-child(2):hover span::after,
+.container th:nth-child(6):hover span::after {
+  border-bottom: 10px solid #fb667a;
+  bottom: 25%;
+}
+
+.container th:hover span.up-arrow::after {
+  border-top: 10px solid #fb667a;
+  top: 33%;
+  border-bottom: 1px solid transparent;
+}
+.container th:hover span.down-arrow::after {
+  border-bottom: 10px solid #fb667a;
+  bottom: 25%;
+  border-top: 1px solid transparent;
 }
 
 .container td:first-child {
@@ -123,11 +143,13 @@ h2 a {
     display: none;
   }
 }
-.container th:nth-child(1), .container th:nth-child(2), .container th:nth-child(6){
+.container th:nth-child(1),
+.container th:nth-child(2),
+.container th:nth-child(6) {
   cursor: pointer;
 }
 
-.main{
+.main {
   /* padding: 2%; */
   width: 90%;
 }
@@ -163,16 +185,16 @@ h2 a {
   font-size: 16px;
 }
 
-.main option{
+.main option {
   font-size: 16px;
 }
 
-.filter-cont{
+.filter-cont {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding-left:8.3%;
+  padding-left: 8.3%;
 }
-.filter-cont .filter:last-child{
+.filter-cont .filter:last-child {
   margin: 2% 10%;
 }
