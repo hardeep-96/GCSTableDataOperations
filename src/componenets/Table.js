@@ -108,7 +108,7 @@ const Table = (props) => {
       status: status,
     };
     getPageData(1, "", params, true);
-  }, 500);
+  }, 800);
 
   const sortTableData = (data, column, sortDir) => {
     let sortedTableDta = data;
@@ -179,9 +179,10 @@ const Table = (props) => {
             className="status"
             onChange={(e) => handleStatusChange(e)}
           >
-            <option value="All">All</option>
-            <option value="COMPLETED">Completed</option>
-            <option value="CANCELED">Canceled</option>
+            <option value="All">ALL</option>
+            <option value="COMPLETED">COMPLETED</option>
+            <option value="CANCELED">CANCELED</option>
+            <option value="ERROR">ERROR</option>
           </select>
         </div>
       </div>

@@ -10,3 +10,13 @@ body{
   color: #a7a1ae;
   background-color: #1f2739;
 }
+
+::-moz-selection { /* Code for Firefox */
+  color: #fff;
+  background: #fb667a;
+}
+
+::selection {
+  color: #fff;
+  background: #fb667a;
+}
