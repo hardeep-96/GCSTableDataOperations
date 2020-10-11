@@ -26,6 +26,32 @@ const search = (data, name) => {
   return result;
 };
 
+const sort = (data, column, sortDir) => {
+  let sortedTableDta = data;
+  if (column && sortDir) {
+    column = column.substr(0, 1).toLowerCase() + column.substr(1);
+    sortedTableDta =
+      column === "name"
+        ? sortedTableDta.sort((itemA, itemB) =>
+            sortDir === "desc"
+              ? itemB[column].localeCompare(itemA[column])
+              : itemA[column].localeCompare(itemB[column])
+          )
+        : column === "createdOn"
+        ? sortedTableDta.sort((itemA, itemB) =>
+            sortDir === "desc"
+              ? new Date(itemB[column]) - new Date(itemA[column])
+              : new Date(itemA[column]) - new Date(itemB[column])
+          )
+        : sortedTableDta.sort((itemA, itemB) =>
+            sortDir === "desc"
+              ? itemB[column] - itemA[column]
+              : itemA[column] - itemB[column]
+          );
+  }
+  return sortedTableDta;
+};
+
 const filter = (data, status) => {
   let jsonArray = data;
   if (status !== "All") {
@@ -56,6 +82,7 @@ router.get("/:page", (req, res, next) => {
       if (parsedData.length) {
         resultRows = search(parsedData, searchedname);
         resultRows = filter(resultRows, status);
+        resultRows = sort(resultRows, sortingColumn, sortingDirection);
 
         function Paginator(items, page = 1, per_page = 20) {
           var offset = isSearchOrFilter === "true" ? 0 : (page - 1) * per_page,

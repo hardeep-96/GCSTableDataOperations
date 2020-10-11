@@ -39,9 +39,7 @@ const Table = (props) => {
       )
       .then((response) => {
         console.log("Response", response.data);
-        setData(
-          sortTableData(response.data.data, sort.columName, sort.sortDirection)
-        );
+        setData(response.data.data);
         setPageData((prevPageData) => ({
           ...prevPageData,
           next: response.data.next,
@@ -110,31 +108,31 @@ const Table = (props) => {
     getPageData(1, "", params, true);
   }, 500);
 
-  const sortTableData = (data, column, sortDir) => {
-    let sortedTableDta = data;
-    if (column && sortDir) {
-      column = column.substr(0, 1).toLowerCase() + column.substr(1);
-      sortedTableDta =
-        column === "name"
-          ? sortedTableDta.sort((itemA, itemB) =>
-              sortDir === "desc"
-                ? itemB[column].localeCompare(itemA[column])
-                : itemA[column].localeCompare(itemB[column])
-            )
-          : column === "createdOn"
-          ? sortedTableDta.sort((itemA, itemB) =>
-              sortDir === "desc"
-                ? new Date(itemB[column]) - new Date(itemA[column])
-                : new Date(itemA[column]) - new Date(itemB[column])
-            )
-          : sortedTableDta.sort((itemA, itemB) =>
-              sortDir === "desc"
-                ? itemB[column] - itemA[column]
-                : itemA[column] - itemB[column]
-            );
-    }
-    return sortedTableDta;
-  };
+  // const sortTableData = (data, column, sortDir) => {
+  //   let sortedTableDta = data;
+  //   if (column && sortDir) {
+  //     column = column.substr(0, 1).toLowerCase() + column.substr(1);
+  //     sortedTableDta =
+  //       column === "name"
+  //         ? sortedTableDta.sort((itemA, itemB) =>
+  //             sortDir === "desc"
+  //               ? itemB[column].localeCompare(itemA[column])
+  //               : itemA[column].localeCompare(itemB[column])
+  //           )
+  //         : column === "createdOn"
+  //         ? sortedTableDta.sort((itemA, itemB) =>
+  //             sortDir === "desc"
+  //               ? new Date(itemB[column]) - new Date(itemA[column])
+  //               : new Date(itemA[column]) - new Date(itemB[column])
+  //           )
+  //         : sortedTableDta.sort((itemA, itemB) =>
+  //             sortDir === "desc"
+  //               ? itemB[column] - itemA[column]
+  //               : itemA[column] - itemB[column]
+  //           );
+  //   }
+  //   return sortedTableDta;
+  // };
 
   const handleSort = (column) => {
     if (column === "Id" || column === "Name" || column === "CreatedOn") {
@@ -145,7 +143,13 @@ const Table = (props) => {
         sortDir = "asc";
       }
       setSort({ columName: column, sortDirection: sortDir });
-      setData(sortTableData(tableData, column, sortDir));
+      const params = {
+        sort: { columName: column, sortDirection: sortDir },
+        name: searchedName,
+        pageData: pageData,
+        status: status,
+      };
+      getPageData(1, "", params, true);
     }
   };
 
