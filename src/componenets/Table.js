@@ -134,7 +134,7 @@ const Table = (props) => {
   //   return sortedTableDta;
   // };
 
-  const handleSort = (column) => {
+  const handleSort = debounce((column) => {
     if (column === "Id" || column === "Name" || column === "CreatedOn") {
       let sortDir = null;
       if (sort.columName === column) {
@@ -151,7 +151,7 @@ const Table = (props) => {
       };
       getPageData(1, "", params, true);
     }
-  };
+  },300);
 
   const handleStatusChange = (e) => {
     let statusNew = e.target.value;
