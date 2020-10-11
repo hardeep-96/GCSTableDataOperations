@@ -41,4 +41,6 @@
   .pagination .fade{
     background: #a7a1ae;
   }
-  
+  .pagination li span.active{
+    pointer-events: none;
+  }
