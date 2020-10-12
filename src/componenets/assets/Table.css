@@ -149,9 +149,12 @@ h2 a {
   cursor: pointer;
 }
 
+.container th:nth-child(4),.container td:nth-child(4){
+  width: 35%;
+}
+
 .main {
-  /* padding: 2%; */
-  width: 90%;
+  width: 100%;
 }
 
 .main input[type="text"] {
